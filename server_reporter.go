@@ -36,7 +36,7 @@ func (r *serverReporter) SentMessage() {
 }
 
 func (r *serverReporter) Handled(code codes.Code) {
-	r.serverMetrics.counterHelper(METRICS_STARTED_EXP_FMT, string(r.rpcType), r.serviceName, r.methodName, code.String()).Inc()
+	r.serverMetrics.counterHelper(METRICS_STARTED_EXP_FMT, string(r.rpcType), r.serviceName, r.methodName).Inc()
 	if r.serverMetrics.enableHistogram {
 		r.serverMetrics.histHelper(METRICS_HANDLE_TIME_EXP_FMT, string(r.rpcType), r.serviceName, r.methodName).Update(time.Since(r.startTime).Seconds())
 	}

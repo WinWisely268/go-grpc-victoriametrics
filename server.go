@@ -12,7 +12,7 @@ var (
 	// DefaultServerMetrics is the default instance of ServerMetrics. It is
 	// intended to be used in conjunction the default Prometheus metrics
 	// registry.
-	DefaultServerMetrics *ServerMetrics
+	DefaultServerMetrics = NewServerMetrics(false)
 
 	// UnaryServerInterceptor is a gRPC server-side interceptor that provides Prometheus monitoring for Unary RPCs.
 	UnaryServerInterceptor = DefaultServerMetrics.UnaryServerInterceptor()
